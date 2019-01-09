@@ -48,7 +48,7 @@ app.initiateSearch = function () {
 
     // clear prev results and get character data from API
     app.clearResults();
-    app.getAPIData("characters");
+    app.getApiData("characters");
 
     // wait until character data is retrieved, THEN filter results based on some regular expressions
     $.when(app.getData)
@@ -85,7 +85,7 @@ app.clearResults = function () {
 
 
 // get character data from API
-app.getAPIData = function(id) {
+app.getApiData = function(id) {
     app.getData = $.ajax({
         url: `${app.url}${id}/`,
         dataType: 'json',
@@ -99,7 +99,7 @@ app.getAPIData = function(id) {
 // get house data from API
 app.getHouseMembers = function(selectedHouse) {
     // returns character IDs of that house in houseResults array
-    app.getAPIData("houses");
+    app.getApiData("houses");
     $.when(app.getData).then((houseArray) => {
         // for each house, check if it matches the selectedHouse
         houseArray.forEach(function (houseObject) {
